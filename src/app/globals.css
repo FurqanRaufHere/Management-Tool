@@ -1,0 +1,36 @@
+@import "@fontsource-variable/schibsted-grotesk";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html { color-scheme: light; }
+  body {
+    @apply bg-paper text-ink antialiased;
+    font-feature-settings: "kern";
+  }
+  ::selection { background: #e3eee7; }
+  :focus-visible { outline: 2px solid #2d6a4f; outline-offset: 2px; border-radius: 6px; }
+  input[type="time"]::-webkit-calendar-picker-indicator { opacity: 0.5; }
+}
+
+@layer components {
+  .field {
+    @apply h-10 w-full rounded-lg border border-line-strong bg-surface px-3 text-[15px] text-ink placeholder:text-faint
+      transition-colors hover:border-faint focus:border-board focus:outline-none focus:ring-2 focus:ring-board/15
+      disabled:cursor-not-allowed disabled:bg-paper;
+  }
+  textarea.field { @apply h-auto py-2.5 leading-relaxed; }
+  select.field { @apply pr-8; }
+  .label { @apply mb-1.5 block text-sm font-medium text-ink-soft; }
+  .hint { @apply mt-1.5 text-[13px] text-muted; }
+  .panel { @apply rounded-xl border border-line bg-surface; }
+  .h-page { @apply text-[26px] font-semibold tracking-[-0.015em] text-ink sm:text-[30px]; }
+  .h-section { @apply text-[17px] font-semibold tracking-[-0.005em] text-ink; }
+  .num { font-variant-numeric: lining-nums; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}
